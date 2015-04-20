@@ -1,11 +1,8 @@
 BII: sleeping, huh? I guess this is the end of our branch!
-CI: this is a garbage branch. Level 1
-CIV: this is a 'garbage' branch. Level 4
+EI: ok we overestimated the revenue
 GI: file that's miracle
-GII: file that's changing everything
-MII: file that's improving over G
+HI: I added a new app to this pool
 PII: file that's very old
 QI: I am who is still living
-commmon1: Apple WATCH PRICE: 20,000USD. Buy the cheap one you idiot!
-commmon2: This Summer: 61C Class rocks!
-commmon3: Should You go to MIT instead?
+commmon1: We go bankrupt, no Apple Watches
+commmon3: find jobs in Microsoft now.

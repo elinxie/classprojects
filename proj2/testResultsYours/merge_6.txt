@@ -1,8 +1,5 @@
 AIII: sunny day!
-CI: this is a garbage branch. Level 1
-CIV: this is a 'garbage' branch. Level 4
+BII: sleeping, huh? I guess this is the end of our branch!
 PII: file that's very old
 QI: I am who is still living
-commmon1: We go bankrupt, no Apple Watches
 commmon1: funding stage arrived! we are hiring..
-commmon2: This Summer: 61C Class rocks!

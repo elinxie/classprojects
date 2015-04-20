@@ -1,0 +1,362 @@
+System.out.println(toFolder);
+System.out.println(target);
+        System.out.println(targetFile.exists());
+
+    // public static void merge(String token, Boolean isMerge){
+    //     String mergeBranch2 = token;
+    //     if (mergeBranch2.equals(currentBranchName)){
+    //         System.out.println("Cannot merge a branch with itself.");
+    //         return;
+    //     }
+
+    //     Commit mergeCommit2 = tryLoadingCommit(GITLET_DIR + mergeBranch2 + ".ser");
+    //     if (mergeCommit2 == null){
+    //         System.out.println("A branch with that name does not exist.");
+    //         return;
+    //     }
+    //     Commit givenBranchCommit = mergeCommit2;
+    //     // HashSet<String> currentCommitFiles = new HashSet<String>();
+    //     // HashSet<String> givenCommitFiles = new HashSet<String>();
+    //     Iterator<String> currentCommitFilesIterator;
+    //     Iterator<String> givenCommitFilesIterator;
+    //     String givenCommitFile;
+    //     Integer givenCommitID;
+    //     HashSet<String> currentBranchChanges = new HashSet<String>();
+    //     HashMap<Integer, String> givenBranchChanges = new HashMap<Integer, String>();
+
+    //     splitCommit = findSplitCommit(givenBranchCommit);
+    //     Commit trackingCurrentBranch = currentCommit;
+    //     while (!trackingCurrentBranch.equals(splitCommit)){
+    //         currentCommitFilesIterator = trackingCurrentBranch.committedFiles.iterator();
+    //         while(currentCommitFilesIterator.hasNext()){
+    //             currentBranchChanges.add(currentCommitFilesIterator.next());
+    //         }
+    //         trackingCurrentBranch = trackingCurrentBranch.previous;
+    //     }
+    //     Commit trackingGivenBranch = givenBranchCommit;
+    //     while (!trackingGivenBranch.equals(splitCommit)){
+    //         givenCommitFilesIterator = trackingGivenBranch.committedFiles.iterator();
+    //         givenCommitID = trackingGivenBranch.id;
+    //         while(givenCommitFilesIterator.hasNext()){
+    //             givenBranchChanges.put(givenCommitID, givenCommitFilesIterator.next());
+    //         }
+    //         trackingGivenBranch = trackingGivenBranch.previous;
+    //     }
+    //     Iterator<Integer> givenBranchChangesIDIterator = givenBranchChanges.keySet().iterator();
+    //     Iterator<String> givenBranchChangesIterator = givenBranchChanges.values().iterator();
+    //     while(givenBranchChangesIterator.hasNext()){
+    //         givenCommitID = givenBranchChangesIDIterator.next();
+    //         givenCommitFile = givenBranchChangesIterator.next();
+    //         if (currentBranchChanges.contains(givenCommitFile)){
+    //             givenCommitFile = givenCommitFile + ".conflicted";
+    //         }
+    //         try{
+    //             executeCopy(GITLET_DIR + givenCommitID + "/" + givenCommitFile, givenCommitFile);
+    //         }
+    //         catch(IOException e){
+    //             System.out.print(e.getMessage());
+    //         }
+
+    //     }
+
+
+    // }
+       // public static void merge2(String token, Boolean splitCommitInitiallyFound){
+    //     String mergeBranch = token;
+    //     if (mergeBranch.equals(currentBranchName)){
+    //         System.out.println("Cannot merge a branch with itself.");
+    //         return;
+    //     }
+
+    //     Commit mergeCommit = tryLoadingCommit(GITLET_DIR + mergeBranch + ".ser");
+    //     if (mergeCommit == null){
+    //         System.out.println("A branch with that name does not exist.");
+    //         return;
+    //     }
+
+    //     //in case someone messes with deleting files manually
+    //     // mapToSurface(currentCommit);
+
+    //     // HashMap<String, String> mergeCommitMap = mergeCommit.fileMap;
+
+    //     splitCommit = tryLoadingCommit(GITLET_DIR + ":" + mergeBranch + ":" + currentBranchName + ":" + "SplitPoint.ser");
+    //     if (splitCommit == null && splitCommitInitiallyFound == false){
+    //         splitCommit = findSplitCommit(mergeCommit);
+
+    //         // System.out.println("no commit where branches split off");
+    //         // return;
+    //     }
+    //     splitCommitMap = splitCommit.fileMap;
+    //     mCommit = mergeCommit;
+    //     mergeKeyStack = new Stack<String>();
+    //     mergeValueStack = new Stack<String>();
+        
+    //     while (mCommit.commitBranch.equals(mergeBranch) && mCommit.equals(splitCommit) == false ){
+    //         mergeAddedSet = mCommit.committedFiles;
+    //         mergeIterator = mergeAddedSet.iterator();
+    //         while(mergeIterator.hasNext()){
+    //             mergeString = mergeIterator.next();
+    //             String[] mergeStringSplit = mergeString.split("/");
+    //             mergeKeyStack.push(mergeString);
+    //             mergeValueStack.push(GITLET_DIR + mCommit.id + "/" + mergeStringSplit[mergeStringSplit.length - 1]);
+    //         }
+    //         mCommit = mCommit.previous;
+
+    //     }
+
+
+
+    //     // Iterator<String> mergeCommitKeys = mergeCommitMap.keySet().iterator();
+    //     // Iterator<String> mergeCommitValues = mergeCommitMap.values().iterator();
+    //     while (mergeKeyStack.empty() == false && mergeValueStack.empty() == false){
+    //         String iteratedKey = mergeKeyStack.pop();
+    //         String iteratedValue = mergeValueStack.pop();
+
+    //         if (splitCommit != null){
+    //             if (splitCommitMap.containsKey(iteratedKey) && currentFileMap.containsKey(iteratedKey)){
+    //                 if(splitCommitMap.get(iteratedKey) != currentFileMap.get(iteratedKey)){
+    //                     // System.out.println("gramps");
+    //                     try{
+    //                         System.out.println(iteratedKey.split("\\.")[0]);
+    //                         executeCopy(iteratedValue, iteratedKey.split("\\.")[0] + ".conflicted");
+    //                     }
+    //                     catch(IOException e){
+    //                         System.out.print(e.getMessage());
+    //                     }
+    //                 }
+    //                 else {
+    //                     // currentFileMap.put(iteratedKey, iteratedValue);
+    //                     try{
+    //                         executeCopy(iteratedValue, iteratedKey);
+    //                     }
+    //                     catch(IOException e){
+    //                     System.out.print(e.getMessage());
+    //                     }
+
+    //                 }
+    //             }
+
+    //             //deals with user if he has removed the file
+    //             if (splitCommitMap.containsKey(iteratedKey) && currentFileMap.containsKey(iteratedKey) == false){
+    //                 try{
+    //                     executeCopy(iteratedValue, iteratedKey + ".conflicted");
+    //                 }
+    //                 catch(IOException e){
+    //                     System.out.print(e.getMessage());
+    //                 }
+    //             }
+
+    //             //deals if user put in same file after split point
+    //             if (splitCommitMap.containsKey(iteratedKey) == false && currentFileMap.containsKey(iteratedKey)){
+    //                 try{
+    //                     executeCopy(iteratedValue, iteratedKey + ".conflicted");
+    //                 }
+    //                 catch(IOException e){
+    //                     System.out.print(e.getMessage());
+    //                 }
+    //             }
+
+
+    //             else {
+    //                 // currentFileMap.put(iteratedKey, iteratedValue);
+    //                 try{
+    //                     executeCopy(iteratedValue, iteratedKey);
+    //                 }
+    //                 catch(IOException e){
+    //                 System.out.print(e.getMessage());
+    //                 }
+
+    //             }
+    //         }
+    //     }
+    //         // else {currentFileMap.put(iteratedKey, iteratedValue);
+    //         //     try{
+    //         //         executeCopy(iteratedValue, iteratedKey);
+    //         //     }
+    //         //     catch(IOException e){
+    //         //     System.out.print(e.getMessage());
+    //         //     }
+    //         // // System.out.println("gumpert");  
+    //         //     }
+            
+    //     // currentCommit.fileMap = currentFileMap;
+    //     // toSerialize(head, currentCommit);
+    //     System.out.println(head);
+    //     // mapToSurface(currentCommit);
+    //     return;
+    // }
+
+
+
+
+
+
+
+                // headCommit = tryLoadingCommit(head);
+                // mapToSurface(headCommit);
+                // while (headCommit.commitBranch.equals(currentBranchName) &&  headCommit.equals(splitCommit) == false){
+                //     rebaseStack.push(headCommit);
+                //     rebaseCommit = headCommit.previous;                    
+                // }
+                // rebaseStack = new Stack<Commit>();
+                // splitCommit = tryLoadingCommit(GITLET_DIR + ":" + rebaseBranch + ":" + currentBranchName + ":" + "SplitPoint.ser");
+                // if (splitCommit == null){
+                //     splitCommit = findSplitCommit(rebaseCommit);
+                // }
+
+
+        //extra tests
+        // case "checkStaged":                                               
+        //     Iterator<String> stgIterator = stagedFiles.iterator();
+        //     while (stgIterator.hasNext()){
+        //         System.out.println(stgIterator.next());
+        //     }
+        //     break;
+
+        // case "checkCommitMsg":
+        //     String currentBranch = (String) tryLoadingObject(GITLET_DIR + "currentBranch.ser");
+        //     Commit checkedCommit = (Commit) tryLoadingObject(currentBranch);
+
+        //     if (checkedCommit != null) System.out.println(checkedCommit.msg);
+        //     break;
+
+        // case "Copy":
+        //     System.out.println("hi");
+        //     if (tokens.length > 1){
+        //      createFolder("herp");
+        //      executeTerminalCopy(tokens[0], tokens[1]);
+        //         System.out.println("plzprint");
+        //         File recentCopy = new File(tokens[1] + "/" + tokens[0]);
+        //         if (recentCopy.exists()){
+        //          System.out.println("true");
+        //         }
+        //         else{
+        //          System.out.println("false");
+        //         }
+        //     }
+        //     else{
+        //      createFolder("derp");
+        //      System.out.println("what is happening");
+        //     }
+        //     break;
+                // rebaseBranch = tokens[0];
+                // if (rebaseBranch.equals(currentBranchName)){
+                //     System.out.println("Cannot rebase a branch with itself.");
+                //     break;
+                // }
+                // rebaseCommit = tryLoadingCommit(GITLET_DIR + rebaseBranch + ".ser");
+                // if (rebaseCommit == null){
+                //     System.out.println("A branch with that name does not exist.");
+                //     break;
+                // }
+                // rebaseStack = new Stack<Commit>();
+                // splitCommit = tryLoadingCommit(GITLET_DIR + ":" + rebaseBranch + ":" + currentBranchName + ":" + "SplitPoint.ser");
+                // if (splitCommit == null){
+                //     splitCommit = findSplitCommit(rebaseCommit);
+                // }
+                // merge(rebaseBranch, true);
+
+                // headCommit = tryLoadingCommit(head);
+                // mapToSurface(headCommit);
+                // while (headCommit.commitBranch.equals(currentBranchName) &&  headCommit.equals(splitCommit) == false){
+                //     rebaseStack.push(headCommit);
+                //     rebaseCommit = headCommit.previous;                    
+                // }
+                // if (rebaseStack.empty()){
+                //     System.out.println("Already up-to-date.");
+                //     break;
+                // }
+                
+                // replayedCommitPrevious = rebaseCommit;
+                // toSerialize(GITLET_DIR + ":" + rebaseBranch + ":" + currentBranchName + ":" + "SplitPoint.ser", rebaseCommit);
+                // toSerialize(GITLET_DIR + ":" + currentBranchName + ":" + rebaseBranch + ":" + "SplitPoint.ser", rebaseCommit);
+                // while (!rebaseStack.empty()){
+                //     replayedCommit = rebaseStack.pop();
+                    
+                //     //getting input from terminal
+                //     System.out.println("Would you like to (c)ontinue, (s)kip this commit, or change this commit's (m)essage?");
+                //     input = System.console().readLine();
+
+                //     while (input.equals("c") == false && input.equals("s") == false && input.equals("m") == false){
+                //         System.out.println("please type in (c) to continue, (s) to skip commit, or (m) to change commit message");
+                //         input = System.console().readLine();
+                //     }
+
+                //     if (input.equals("c") || input.equals("m")){
+                //         currentIDnumber = tryLoadingInteger(CURRENTID);
+                //         toSerialize(CURRENTID, currentIDnumber + 1);
+                //         replayedCommit.id = currentIDnumber;
+                //         replayedCommit.previous = replayedCommitPrevious;
+                //         replayedCommitPrevious = replayedCommit;
+                //         if (input.equals("m")){
+                //             System.out.print("Please enter a new message for this commit.");
+                //             String msgInput = System.console().readLine();
+                //             replayedCommit.msg = msgInput;
+                //             addToCheckID(msgInput);
+                //         }
+                //         else{
+                //             addToCheckID(replayedCommit.msg);
+                //         }
+                //         toSerialize(GITLET_DIR + currentIDnumber + ".ser", replayedCommit);
+                //     }
+                //     if (input.equals("s")){
+                //         //does nothing
+                //         int doesNothing = 5;                 
+                //     }
+                // }
+                // toSerialize(head, replayedCommit);
+                // refreshStagedandRemoved();
+                // rebaseBranch = tokens[0];
+                // if (rebaseBranch. equals(currentBranchName)){
+                //     System.out.println("Cannot rebase a branch with itself.");
+                //     break;
+                // }
+                // rebaseCommit = tryLoadingCommit(GITLET_DIR + rebaseBranch + ".ser");
+                // if (rebaseCommit == null){
+                //     System.out.println("A branch with that name does not exist.");
+                //     break;
+                // }
+
+                // rebaseStack = new Stack<Commit>();
+                // splitCommit = tryLoadingCommit(GITLET_DIR + ":" + rebaseBranch + ":" + currentBranchName + ":" + "SplitPoint.ser");
+                // if (splitCommit == null){
+                //     splitCommit = findSplitCommit(rebaseCommit);
+                // }
+                // merge(rebaseBranch, true);  
+                // headCommit = tryLoadingCommit(head);
+                // mapToSurface(headCommit);
+                // while (headCommit.commitBranch.equals(currentBranchName) &&  headCommit.equals(splitCommit) == false){
+                //     rebaseStack.push(headCommit);
+                //     headCommit = headCommit.previous;                    
+                // }
+                // if (rebaseStack.empty()){
+                //     System.out.println("Already up-to-date.");
+                //     break;
+                // }
+                
+                // replayedCommitPrevious = rebaseCommit;
+                // toSerialize(GITLET_DIR + ":" + rebaseBranch + ":" + currentBranchName + ":" + "SplitPoint.ser", rebaseCommit);
+                // toSerialize(GITLET_DIR + ":" + currentBranchName + ":" + rebaseBranch + ":" + "SplitPoint.ser", rebaseCommit);
+                // while (!rebaseStack.empty()){
+                //     currentIDnumber = tryLoadingInteger(CURRENTID);
+                //     toSerialize(CURRENTID, currentIDnumber + 1);
+                //     replayedCommit = rebaseStack.pop();
+                //     replayedCommit.id = currentIDnumber;
+                //     replayedCommit.previous = replayedCommitPrevious;
+                //     replayedCommitPrevious = replayedCommit;
+                //     toSerialize(GITLET_DIR + currentIDnumber + ".ser", replayedCommit);
+                //     addToCheckID(replayedCommit.msg);
+                // }
+                // toSerialize(head, replayedCommit);
+                // refreshStagedandRemoved();
+
+System.out.println(toFolder);
+// targetFile.createNewFile();
+       // HashSet<String> currentCommitFiles = new HashSet<String>();
+        // HashSet<String> givenCommitFiles = new HashSet<String>();
+                System.out.println("hello");
+                System.out.println("cramps");
+                System.out.println("marge");
+            System.out.println(targetFile.exists());
+            System.out.println(targetFile.exists());
+

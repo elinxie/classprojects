@@ -118,11 +118,13 @@ public class GitletSmallTest {
         createFile(wugFileName, wugText);
         gitlet("init");
         gitlet("add", wugFileName);
-        gitlet("commit", "added wug");
+        String output = gitlet("commit", "added wug");
+        System.out.println(output);
         assertTrue(checkCurrentBranch(GITLET_DIR + "master.ser"));
         // assertTrue(checkCommit("added wug"));
         writeFile(wugFileName, "This is not a wug.");
-        gitlet("checkout", wugFileName);
+        output = gitlet("checkout", wugFileName);
+        System.out.println(output);
         assertEquals(wugText, getText(wugFileName));
     }
 
@@ -145,17 +147,17 @@ public class GitletSmallTest {
         gitlet("commit", "march");
         gitlet("checkout", "frank");
         String log = gitlet("checkout", TESTING_DIR + "funk.txt");
-        // System.out.println(log);
+        System.out.println(log);
 
         String errorMessage = "File does not exist in the most recent commit, or no such branch exists.";
         // System.out.println("File does not exist in the most recent commit, or no such branch exists.");
-
+        
 
         log = gitlet("merge", "master");
         // System.out.println(log);
 
         log = gitlet("checkout" , TESTING_DIR + "funk.txt"); 
-        // System.out.println(log);
+        System.out.println(log);
         gitlet("branch", "rich");
         createFile(TESTING_DIR + "crump.txt", "crump");
         gitlet("add", TESTING_DIR + "crump.txt");
@@ -169,6 +171,9 @@ public class GitletSmallTest {
         theGitlet("merge", "frank");
         log = gitlet("checkout", TESTING_DIR + "derek.txt");
         System.out.println(log);
+        log = gitlet("log");
+        System.out.println(log);
+        // assertEquals(getText(TESTING_DIR + "frank.txt"), "frank");
         assertEquals(getText(TESTING_DIR + "derek.txt"), "derek");
         assertEquals(getText(TESTING_DIR + "crump.txt"), "crump");
 
@@ -192,6 +197,30 @@ public class GitletSmallTest {
         // System.out.println(storedLog);
         Commit currentCommit = (Commit) tryLoadingObject(GITLET_DIR + "master.ser");
         assertTrue(!currentCommit.fileMap.containsKey(wugFileName));
+
+
+    }
+
+    @Test
+    public void testBasicRebase() {
+        String wugFileName = TESTING_DIR + "wug.txt";
+        String wugText = "This is a wug.";
+        createFile(wugFileName, wugText);
+        gitlet("init");
+        gitlet("add", wugFileName);
+        gitlet("commit", "added wug");
+        assertTrue(checkCurrentBranch(GITLET_DIR + "master.ser"));
+        writeFile(wugFileName, "This is not a wug.");
+        String removedLog = gitlet("rm", wugFileName);
+        // System.out.println(removedLog);
+        String storedLog = gitlet("commit", "removed File");
+        // System.out.println(storedLog);
+        Commit currentCommit = (Commit) tryLoadingObject(GITLET_DIR + "master.ser");
+        assertTrue(!currentCommit.fileMap.containsKey(wugFileName));
+
+        //building tree
+
+
 
 
     }

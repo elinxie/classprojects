@@ -1,6 +1,9 @@
 CI: this is a garbage branch. Level 1
 CIV: this is a 'garbage' branch. Level 4
+DI: Revenue increased by this new feature!
+GI: file that's miracle
+HI: I added a new app to this pool
 PI: file that's no one knows what it is
-commmon1: Apple WATCH PRICE: 20,000USD. Are you going to buy?
+commmon1: Apple WATCH PRICE: 20,000USD. Buy the cheap one you idiot!
 commmon2: This Summer: 61C Class rocks!
 commmon3: Should You go to MIT instead?

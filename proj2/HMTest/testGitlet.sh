@@ -230,7 +230,7 @@ rm -r yourtestFiles/*.conflicted
 rm -r yourtestFiles/*
 echo "Now testing rebase..."
 echo "Now testing rebasing case 1...Branch A to master"
-echo "yes" | java Gitlet checkout A >/dev/null
+echo "yes" | java Gitlet checkout A  >/dev/null
 echo "yes" | java Gitlet rebase master >/dev/null
 
 cat yourtestFiles/* > testResultsYours/rebase_1.txt
